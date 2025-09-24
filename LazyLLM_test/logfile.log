@@ -1,0 +1,7 @@
+ERROR 2025-09-23 12:02:00 Failed to load configuration
+INFO 2025-09-23 12:05:00 load configuration
+INFO 2025-09-23 12:06:00 Database connection succeed
+WARNING 2025-09-23 12:07:00 Meeting config file
+ERROR 2025-09-23 12:15:00 Database connection failed
+Active 2025-09-23 12:16:00 Missing config file
+summary 2025-09-23 12:20:00 Database connection succeed
