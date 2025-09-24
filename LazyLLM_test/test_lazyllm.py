@@ -60,6 +60,11 @@ class LogAnalysisAssistant:
         else:
             return "I'm sorry, I didn't quite understand your query."
 
+    def remove_think_tags(self, text):
+        # 使用正则表达式去掉 <think> 标签及其中的内容
+        cleaned_text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+        return cleaned_text
+
     def start(self):
         """启动查询助手，处理用户输入"""
         while True:
@@ -67,11 +72,12 @@ class LogAnalysisAssistant:
             if query.lower() == "quit":
                 break
             # 向 LLM 发送查询并获取结果
-            res = self.chat.forward(self.query_logs(query))
+            res = self.remove_think_tags(self.chat.forward(self.query_logs(query)))
             print(f"answer: {res}")
 
 # 使用方法
 log_file_path = "logfile.log"  # 替换为你的日志文件路径
 assistant = LogAnalysisAssistant(log_file_path, chat_model='GLM-4.5')
 assistant.start()
+
 
