@@ -67,10 +67,11 @@ class LogAnalysisAssistant:
             if query.lower() == "quit":
                 break
             # 向 LLM 发送查询并获取结果
-            res = self.query_logs(query)
+            res = self.chat.forward(self.query_logs(query))
             print(f"answer: {res}")
 
 # 使用方法
 log_file_path = "logfile.log"  # 替换为你的日志文件路径
 assistant = LogAnalysisAssistant(log_file_path, chat_model='GLM-4.5')
 assistant.start()
+
